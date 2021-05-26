@@ -8,18 +8,23 @@ import {
     FlatList
 } from 'react-native';
 import {List} from 'react-native-paper';
-import Icon from 'react-native-vec'
+import * as Icon from 'react-native-vector-icons/';
 import estilo from './estilo';
 
 const Sidebar = ({navigation}) => {
     const Sections = [
         {
             id: 1,
-            icon: 'user',
+            icon: 'user-minus',
             title: 'Clientes',
             content: {
-                link: 'Novo',
-                link2: 'Listar'
+                icon: 'circle',
+                link: {
+                    name: 'Novo',
+                },
+                link2: {
+                    name: 'Listar',
+                }
             }
         },
         {
@@ -27,8 +32,13 @@ const Sidebar = ({navigation}) => {
             icon: 'users',
             title: 'colaboradores',
             content: {
-                link: 'Novo',
-                link2: 'Listar'
+                icon: 'circle',
+                link: {
+                    name: 'Novo',
+                },
+                link2: {
+                    name: 'Listar',
+                }
             }
         },
         {
@@ -42,11 +52,16 @@ const Sidebar = ({navigation}) => {
         },
         {
             id: 4,
-            icon: 'file',
-            title: 'Documentos',
+            icon: '',
+            title: 'Equipamentos',
             content: {
-                link: 'Novo',
-                link2: 'Listar'
+                icon: 'circle',
+                link: {
+                    name: 'Novo',
+                },
+                link2: {
+                    name: 'Listar',
+                }
             }
         },
         {
@@ -54,8 +69,13 @@ const Sidebar = ({navigation}) => {
             icon: 'file',
             title: 'Documentos',
             content: {
-                link: 'Novo',
-                link2: 'Listar'
+                icon: 'circle',
+                link: {
+                    name: 'Novo',
+                },
+                link2: {
+                    name: 'Listar',
+                }
             }
         },
         {
@@ -72,8 +92,13 @@ const Sidebar = ({navigation}) => {
             icon: 'file',
             title: 'Documentos',
             content: {
-                link: 'Novo',
-                link2: 'Listar'
+                icon: 'circle',
+                link: {
+                    name: 'Novo',
+                },
+                link2: {
+                    name: 'Listar',
+                }
             }
         },
     ];
@@ -99,10 +124,16 @@ const Sidebar = ({navigation}) => {
                             <List.Section>
                                 <List.Accordion 
                                     title={item.title}
-                                    left={props => <Icon icon={item.icon}/>}
+                                    left={props => <Icon name={item.icon} size={20}/>}
                                 >
-                                    <List.Item title={item.content.link} />
-                                    <List.Item title={item.content.link2} />
+                                    <List.Item 
+                                        title={item.content.link.name}
+                                        left={props => <Icon name={item.content.icon} size={15} />}
+                                    />
+                                    <List.Item 
+                                        title={item.content.link2.name}
+                                        left={props => <Icon name={item.content.icon} size={15} />}
+                                    />
                                 </List.Accordion>
                             </List.Section>
                         )
