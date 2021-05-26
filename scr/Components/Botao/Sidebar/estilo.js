@@ -3,13 +3,13 @@ import {StyleSheet} from 'react-native';
 const estilo = StyleSheet.create({
     container: {
         flex: 1,
-        margin: 2
     },
     cardUser: {
-
+        height: 200,
+        backgroundColor: 'white',
     },
     listaItens: {
-        
+        backgroundColor: 'grey',
     }
 });
 
