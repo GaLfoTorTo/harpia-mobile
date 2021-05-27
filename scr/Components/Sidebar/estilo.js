@@ -10,6 +10,13 @@ const estilo = StyleSheet.create({
     },
     listaItens: {
         backgroundColor: 'grey',
+    },
+    icone: {
+        color: 'white',
+    },
+    title: {
+        color: 'white',
+        marginLeft: 10,
     }
 });
 
