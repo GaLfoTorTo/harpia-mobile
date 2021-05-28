@@ -21,10 +21,13 @@ const Sidebar = ({navigation}) => {
         >
             <View style={estilo.cardUser}>
                 <Image 
-                    //source={}
+                    source={require('../../../assets/img/user-default.png')}
                     style={estilo.userImg}
                 />
-                <Text style={estilo.userName}></Text>
+                <Text style={estilo.userName}>Admin</Text>
+                <TouchableOpacity>
+                    <Text style={estilo.userName}>sair</Text>
+                </TouchableOpacity>
             </View>
             <View style={estilo.listaItens}>
                 <FlatList
@@ -40,13 +43,17 @@ const Sidebar = ({navigation}) => {
                                 >
                                     <List.Item 
                                         title={item.linkNovo}
+                                        titleStyle={estilo.title}
                                         style={estilo.link}
-                                        left={props => <Icon name={item.iconLink} size={15} style={estilo.icone} />}
+                                        onPress={()=> console.warn('teste')}
+                                        left={props => <Icon name={item.iconLink} size={15} style={estilo.iconeLink} />}
                                     />
                                     <List.Item 
                                         title={item.linkListar}
-                                        titleStyle={estilo.link}
-                                        left={props => <Icon name={item.iconLink} size={15} style={estilo.icone} />}
+                                        titleStyle={estilo.title}
+                                        style={estilo.link}
+                                        onPress={() => console.warn('teste')}
+                                        left={props => <Icon name={item.iconLink} size={15} style={estilo.iconeLink} />}
                                     />
                                 </List.Accordion>
                             </List.Section>

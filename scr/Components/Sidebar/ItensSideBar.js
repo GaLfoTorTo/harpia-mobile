@@ -10,7 +10,7 @@ const ItensSideBar = [
     {
         id: 2,
         icone: 'users',
-        title: 'colaboradores',
+        title: 'Colaboradores',
         linkNovo: 'Novo',
         linkListar: 'Listar',
         iconLink: 'circle-notch'

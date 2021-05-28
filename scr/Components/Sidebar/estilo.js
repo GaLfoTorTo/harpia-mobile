@@ -7,7 +7,20 @@ const estilo = StyleSheet.create({
     },
     cardUser: {
         height: 200,
-        backgroundColor: 'white',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderBottomWidth: 1,
+        borderBottomColor: 'white'
+    },
+    userImg: {
+        width: 70,
+        height: 70,
+        borderRadius: 40,
+        marginBottom: 10
+    },
+    userName: {
+        color: 'white',
+        fontSize: 20
     },
     icone: {
         color: 'white',
@@ -18,7 +31,12 @@ const estilo = StyleSheet.create({
     },
     link: {
         color: 'white',
-        alignItems: 'center'
+        position: 'relative',
+        left: 20
+    },
+    iconeLink:{
+        marginTop: 10,
+        color: 'white'
     }
 });
 

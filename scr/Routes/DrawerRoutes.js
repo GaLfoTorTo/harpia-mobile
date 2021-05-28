@@ -10,9 +10,6 @@ const DrawerRoutes = () => {
         <Drawer.Navigator
             drawerContent={() => (<Sidebar />)}
             edgeWidth={200}
-            drawerStyle={{
-                backgroundColor: 'black'
-            }}
         >
             <Drawer.Screen 
                 name='Dashboard'

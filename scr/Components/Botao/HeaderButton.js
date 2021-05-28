@@ -5,10 +5,18 @@ import Icon from 'react-native-vector-icons/Feather';
 
 const HeaderButton = ({ menuName }) => {
     const navigate = useNavigation();
+
+    const escolha = () => {
+        if(menuName == 'menu'){
+            navigate.dispatch(DrawerActions.toggleDrawer())
+        }else {
+            return true;
+        }
+    }
     return (
         <TouchableOpacity
             style={estilo.botao}
-            onPress={() => navigate.dispatch(DrawerActions.toggleDrawer())}
+            onPress={() => escolha()}
         >
             <Icon name={menuName} size={30} style={estilo.icone} />
         </TouchableOpacity>
