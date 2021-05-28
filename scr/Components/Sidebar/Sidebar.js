@@ -41,12 +41,12 @@ const Sidebar = ({navigation}) => {
                                     <List.Item 
                                         title={item.linkNovo}
                                         style={estilo.link}
-                                        left={props => <Icon name={item.iconLink} size={15} style={estilo.iconeLink} />}
+                                        left={props => <Icon name={item.iconLink} size={15} style={estilo.icone} />}
                                     />
                                     <List.Item 
                                         title={item.linkListar}
-                                        style={estilo.link}
-                                        left={props => <Icon name={item.iconLink} size={15} style={estilo.iconeLink} />}
+                                        titleStyle={estilo.link}
+                                        left={props => <Icon name={item.iconLink} size={15} style={estilo.icone} />}
                                     />
                                 </List.Accordion>
                             </List.Section>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, View, Image, TextInput, Text} from 'react-native';
+import {SafeAreaView, View, Image, TextInput, Text, TouchableOpacity} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 import estilo from './estilo';
 
@@ -22,12 +22,12 @@ const Login = ({navigation}) => {
                     style={estilo.input}
                     placeholder='Senha'
                 />
-                <RectButton 
+                <TouchableOpacity 
                     style={estilo.botao}
                     onPress={() => navigation.replace('Dashboard')}
                 >
                     <Text style={estilo.textInput}>Entrar</Text>
-                </RectButton>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
     );
