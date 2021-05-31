@@ -1,5 +1,5 @@
 import React from 'react';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
+import {  DrawerActions, useNavigation, useNavigationState,  } from '@react-navigation/native';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -10,12 +10,13 @@ const HeaderButton = ({ menuName }) => {
         if(menuName == 'menu'){
             navigate.dispatch(DrawerActions.toggleDrawer())
         }else {
-            return true;
+            navigate.dispatch(DrawerActions.jumpTo('Dashboard', {setVar: menuName}))
         }
     }
     return (
         <TouchableOpacity
             style={estilo.botao}
+            onAccessibilityAction={{}}
             onPress={() => escolha()}
         >
             <Icon name={menuName} size={30} style={estilo.icone} />

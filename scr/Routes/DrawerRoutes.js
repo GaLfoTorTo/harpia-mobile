@@ -2,10 +2,13 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import Sidebar from '../Components/Sidebar/Sidebar';
+import HeaderButton from '../Components/Botao/HeaderButton';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerRoutes = () => {
+
+
     return(
         <Drawer.Navigator
             drawerContent={() => (<Sidebar />)}

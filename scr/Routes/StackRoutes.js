@@ -24,8 +24,8 @@ const StackRoutes = ({navigation}) => {
                     component={DrawerRoutes}
                     options={{
                         title: false,
-                        headerLeft: () => (<HeaderButton menuName='menu' />),
                         headerRight: () => (<HeaderButton menuName='list' />),
+                        headerLeft: () => (<HeaderButton menuName='menu' />),
                     }}
                 />
             </Stack.Navigator>
