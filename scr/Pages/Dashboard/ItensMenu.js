@@ -1,4 +1,4 @@
-const ItensSideBar = [
+const ItensMenu = [
     {
         id: 1,
         icone: 'user-friends',
@@ -57,4 +57,4 @@ const ItensSideBar = [
     },
 ];
 
-export default ItensSideBar;
+export default ItensMenu;

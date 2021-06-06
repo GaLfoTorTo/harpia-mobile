@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import Colors from '../../Style/Colors'
 
 const estilo = StyleSheet.create({
     container: {
@@ -10,7 +11,7 @@ const estilo = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderBottomWidth: 1,
-        borderBottomColor: 'white'
+        borderBottomColor: Colors.botoes.ligth
     },
     userImg: {
         width: 70,
@@ -19,24 +20,24 @@ const estilo = StyleSheet.create({
         marginBottom: 10
     },
     userName: {
-        color: 'white',
+        color: Colors.botoes.ligth,
         fontSize: 20
     },
     icone: {
-        color: 'white',
+        color: Colors.botoes.ligth,
     },
     title: {
-        color: 'white',
+        color: Colors.botoes.ligth,
         marginLeft: 10,
     },
     link: {
-        color: 'white',
+        color: Colors.botoes.ligth,
         position: 'relative',
         left: 20
     },
     iconeLink:{
         marginTop: 10,
-        color: 'white'
+        color: Colors.botoes.ligth
     }
 });
 
