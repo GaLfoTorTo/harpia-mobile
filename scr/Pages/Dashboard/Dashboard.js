@@ -27,6 +27,16 @@ const Dashboard = ({ navigation, route}) => {
         }
 
     }
+
+    const navegar = (item) => {
+        if(item.linkListar == 'Listar'){
+            setOpen(false);
+            navigation.navigate(item.title);
+        }else{
+            setOpen(false);
+            navigation.navigate(item.title);
+        }
+    }
     useEffect(() => {
         if (menuName !== undefined) {
             setOpen(true)
@@ -83,7 +93,7 @@ const Dashboard = ({ navigation, route}) => {
                                                             style={{ width: '50%' }}
                                                             title={item.linkListar}
                                                             titleStyle={estilo.titleCardMenu}
-                                                            onPress={() => console.warn('teste')}
+                                                            onPress={() => navegar(item)}
                                                             left={props => <Icon name={item.iconLink} size={15} style={estilo.iconeLink} />}
                                                         />
                                                     </View>

@@ -1,4 +1,7 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
+import Colors from '../../Style/Colors';
+
+const medidas = Dimensions.get('screen').width;
 
 const estilo = StyleSheet.create({
     container:{
@@ -8,18 +11,29 @@ const estilo = StyleSheet.create({
         backgroundColor: 'rgb(240, 240, 240)',
         padding: 10
     },
-    contentImg: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-    },
     imagem: {
-        width: '80%',
-        height: '20%'
+        flex: 1,
+        width: '90%',
+        height: '20%' 
+    },
+    cardMessage: {
+        position: 'relative',
+        bottom: 10,
+        width: '90%',
+        backgroundColor: 'rgba(255, 0, 0, 0.4)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        paddingVertical: 15,
+        flexDirection: 'row'
+    },
+    textMessage: {
+        color: Colors.botoes.danger,
+        textAlign: 'center',
+        flex: 0.9
     },
     cardInputs: {
-        flex: 0.8,
+        flex: 0.7,
         marginBottom: 50,
         width: '90%',
         backgroundColor: 'rgb(255, 255, 255)',
@@ -38,7 +52,7 @@ const estilo = StyleSheet.create({
     botao: {
         backgroundColor: 'rgb(50, 50, 200)',
         width: '88%',
-        height: '22%',
+        height: '25%',
         borderRadius: 20,
         marginTop: 20,
         textAlign: 'center',
