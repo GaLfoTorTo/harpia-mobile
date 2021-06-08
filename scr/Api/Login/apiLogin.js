@@ -2,7 +2,7 @@ import api from '../api';
 
 const handleLogin = async (email, password) => {
     const loginHTTP = await api
-        .post('logar', {
+        .post('/logar', {
             email: email,
             password: password
         })
@@ -11,7 +11,7 @@ const handleLogin = async (email, password) => {
             return response
         })
         .catch(function(error){
-            console.warn('deuruim ', error);
+            console.warn('deu ruim ', error.response);
         });
     return loginHTTP
 }
