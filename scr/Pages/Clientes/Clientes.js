@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import ListarClientes from '../../Api/Clientes/ListarClientes';
+import estilo from './estilo';
 
 const Clientes = ({navigation}) => {
     const [clientes, SetClientes] = useState();
@@ -11,8 +12,10 @@ const Clientes = ({navigation}) => {
 
     console.warn(clientes)
     return(
-        <SafeAreaView>
-
+        <SafeAreaView style={estilo.containers}>
+            <View style={estilo.cardForm}>
+                
+            </View>
         </SafeAreaView>
     );
 }

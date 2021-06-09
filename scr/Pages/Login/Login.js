@@ -16,11 +16,10 @@ const Login = ({navigation}) => {
             setMessage('Login e Senha são obrigátorios');
         }else{
             const resposta = await handleLogin(email, password);
-            if(!resposta){
-                console.warn(resposta)
-                //navigation.replace('Dashboard');
+            if(resposta.data != ''){
+                navigation.replace('Dashboard', {resposta: resposta});
             }else{
-                setMessage('Não foi possivel logar');
+                setMessage('Login ou Senha inválidos');
             }
         }
     }

@@ -5,6 +5,11 @@ const estilo = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    cardForm: {
+        flex: 1,
+        margin: 2,
+        backgroundColor: 'white'
     }
 });
 

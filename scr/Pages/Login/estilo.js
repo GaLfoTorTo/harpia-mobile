@@ -20,7 +20,7 @@ const estilo = StyleSheet.create({
         position: 'relative',
         bottom: 10,
         width: '90%',
-        backgroundColor: 'rgba(255, 0, 0, 0.4)',
+        backgroundColor: Colors.botoes.ligth,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
@@ -50,7 +50,7 @@ const estilo = StyleSheet.create({
         width: '88%'
     },
     botao: {
-        backgroundColor: 'rgb(50, 50, 200)',
+        backgroundColor: Colors.botoes.primary,
         width: '88%',
         height: '25%',
         borderRadius: 20,
