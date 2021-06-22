@@ -16,14 +16,3 @@ const handleLogin = async (email, password) => {
 }
 
 export default handleLogin;
-
-//method controller 
-
-/* public function logarApp(Request $request){
-        $credentials = $request->only('email', 'password');
-        if(Auth::attempt($credentials)){
-            $authentication = Auth::user();
-            return response()->json([$authentication]);
-        }
-    }
- */
