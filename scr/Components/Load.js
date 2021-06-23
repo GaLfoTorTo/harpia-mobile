@@ -6,7 +6,7 @@ const Load = () => {
     return (
         <View style={estilo.container}>
             <LottieView
-                source={require('../../assets/harpinimation.json')}
+                source={require('../../assets/harpianimation.json')}
                 autoPlay
                 loop
                 style={estilo.load}
@@ -19,11 +19,15 @@ const estilo = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0,0,0,0.2)',
     },
     load: {
         alignItems: 'center',
         justifyContent: 'center',
+        position: 'relative',
+        right: 15,
+        bottom: 15,
         backgroundColor: 'transparent',
         width: '70%',
         height: '70%'

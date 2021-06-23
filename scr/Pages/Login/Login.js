@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {SafeAreaView, View, Image, TextInput, Text, TouchableOpacity} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import Load from '../../Components/Load';
 import handleLogin from '../../Api/Login/apiLogin';
 import estilo from './estilo';
 
@@ -10,8 +11,10 @@ const Login = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const Logar = async () => {
+        setLoading(true);
         if(email == '' || email == undefined || password == '' || password == undefined){
             setMessage('Login e Senha são obrigátorios');
         }else{
@@ -19,10 +22,14 @@ const Login = ({navigation}) => {
             if(resposta.data != ''){
                 navigation.replace('Dashboard', {resposta: resposta});
             }else{
+                setLoading(false);
                 setMessage('Login ou Senha inválidos');
             }
         }
+        setLoading(false)
     }
+    if(loading)
+        return (<Load /> )
 
     return(
         <SafeAreaView style={estilo.container}>

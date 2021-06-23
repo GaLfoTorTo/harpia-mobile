@@ -20,7 +20,7 @@ const estilo = StyleSheet.create({
         position: 'relative',
         bottom: 10,
         width: '90%',
-        backgroundColor: Colors.botoes.ligth,
+        backgroundColor: 'rgba(255, 0,0,0.4)',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
