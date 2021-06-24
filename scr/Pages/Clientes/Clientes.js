@@ -7,21 +7,61 @@ import {
     ScrollView,
     Text
 } from 'react-native';
+import Modal from 'react-native-modal';
 import { FlatList, RectButton } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import Load from '../../Components/Load';
 import ListarClientes from '../../Api/Clientes/ListarClientes';
 import ItemLista from '../../Components/ItemLista/ItemLista';
 import estilo from './estilo';
 
 const Clientes = ({navigation}) => {
-    const [clientes, SetClientes] = useState();
+    const [clientes, setClientes] = useState([]);
+    const [open, setOpen] = useState(false);
 
-    /* useEffect(() => {
-        ListarClientes(SetClientes)
-    },) */
+    useEffect(() => {
+        ListarClientes(setClientes);
+    },[])
+
+    var lastTap = 0;
+    const getDoubleTap = () => {
+        const now = new Date().getTime();
+        const delta = now - lastTap;
+        const DOUBLE_PRESS_DELAY = 300;
+
+        if (delta < DOUBLE_PRESS_DELAY) {
+            setOpen(true)
+        }
+        lastTap = now
+    }
+
+    if(clientes == undefined || clientes == '')
+        return (<Load />)
 
     return(
         <SafeAreaView style={estilo.container}>
+            {open == true &&
+                <Modal
+                isVisible={open}
+                animationIn='zoomInDown'
+                animationOut='zoomOut'
+                backdropColor='grey'
+                backdropOpacity={0.5}
+                onBackButtonPress={() => setOpen(false)}
+                >
+                    <View style={estilo.containerModal}>
+                        <View style={estilo.headerModal}>
+                            <Text style={estilo.titleModal}>Cliente</Text>
+                            <TouchableOpacity
+                                onPress={() => setOpen(false)}
+                            >
+                                <Icon name='times' size={30} style={estilo.iconeModal} />
+                            </TouchableOpacity>
+                        </View>
+                    <View style={estilo.divModal}></View>
+                    </View>
+                </Modal>
+            }
             <ScrollView 
                 style={estilo.cardLista}
                 showsVerticalScrollIndicator={false}
@@ -48,17 +88,22 @@ const Clientes = ({navigation}) => {
                     <View style={estilo.div}></View>
                     <Text style={estilo.label}>Nome</Text>
                     <View style={estilo.div}></View>
-                    <Text style={estilo.label}>Alguma </Text>
+                    <Text style={estilo.label}>CPF/CNPJ</Text>
                 </View>
                 <FlatList 
-                    data={['teste1', 'teste2', 'teste3', 'teste', 'teste1', 'teste2', 'teste3', 'teste', 'teste1', 'teste2']}
+                    data={clientes}
                     showsVerticalScrollIndicator={false}
                     scrollEnabled={false}
                     keyExtractor={(item, index) => index.toString()}
-                    renderItem={({item}) => {
+                    renderItem={({item})=> {
                         return(
                             <View style={estilo.table}>
-                                <ItemLista />
+                                <ItemLista
+                                    id={item.id}
+                                    nome={item.nome}
+                                    cpf_cnpj={item.cpf_cnpj}
+                                    open={() => getDoubleTap()}
+                                />
                             </View>
                         );
                     }}

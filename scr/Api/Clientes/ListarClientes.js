@@ -1,17 +1,16 @@
 import api from '../api';
-const ListarClientes = async (callback) => {
-    /* const cabecalho = {
-        method: 'GET',
-        headers: {
-            'Content-Type' : 'application/json',
-            'app-id' : ID
-        }
-    } */
 
-    //const ListarHTTP = await (fetch('https://192.168.15.76/clientes', cabecalho));
-    const ListarHTTP = await api.get('/clientes')
-    const dadosJson = await ListarHTTP.json();
-    callback(dadosJson);
+const ListarClientes = async (callback) => {
+    const loginHTTP = await api
+        .get('clientes')
+        .then(function(response){
+            const clientes = response.data[0].data;
+            return clientes
+        })
+        .catch(function(error){
+            return error
+        });
+    callback(loginHTTP)
 }
 
 export default ListarClientes;

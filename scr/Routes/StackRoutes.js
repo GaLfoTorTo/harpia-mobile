@@ -14,13 +14,6 @@ const StackRoutes = ({navigation}) => {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen
-                    name='Login'
-                    component={Login}
-                    options={{
-                        headerShown: false
-                    }}
-                />
-                <Stack.Screen
                     name='Dashboard'
                     component={DrawerRoutes}
                     options={{
@@ -29,6 +22,14 @@ const StackRoutes = ({navigation}) => {
                         headerLeft: () => (<HeaderButton menuName='bars' />),
                     }}
                 />
+                <Stack.Screen
+                    name='Login'
+                    component={Login}
+                    options={{
+                        headerShown: false
+                    }}
+                />
+                
                 <Stack.Screen
                     name='Clientes'
                     component={Clientes}

@@ -20,7 +20,7 @@ const estilo = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'rgba(0,0,0,0.2)',
+        backgroundColor: 'transparent',
     },
     load: {
         alignItems: 'center',

@@ -5,9 +5,38 @@ const estilo = StyleSheet.create({
     container:{
         flex: 1,
         alignItems: 'center',
-        //justifyContent: 'center',
+        justifyContent: 'center',
         padding: 5
     },
+
+    //modal 
+    containerModal: {
+        alignSelf: 'center',
+        borderRadius: 15,
+        backgroundColor: Colors.botoes.ligth,
+        padding: 5,
+        width: '100%',
+        height: '90%'
+    },
+    headerModal: {
+        flexDirection: 'row',
+        padding: 10,
+        alignItems: 'center'
+    },
+    divModal: {
+        backgroundColor: 'rgba(0,0,0,0.2)',
+        width: '100%',
+        height: 1
+    },
+    titleModal: {
+        flex: 1,
+        fontSize: 18,
+        color: Colors.botoes.dark
+    },
+    iconeModal: {
+        color: Colors.botoes.dark
+    },
+
     cardLista: {
         backgroundColor: Colors.botoes.ligth,
         width: '98%',
