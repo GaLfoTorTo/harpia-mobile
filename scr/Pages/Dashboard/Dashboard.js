@@ -31,7 +31,7 @@ const Dashboard = ({ navigation, route}) => {
     const navegar = (item) => {
         if(item.linkListar == 'Listar'){
             setOpen(false);
-            navigation.navigate(item.title);
+            navigation.navigate('Listagem', { item });
         }else{
             setOpen(false);
             navigation.navigate(item.title);

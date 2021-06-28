@@ -1,10 +1,11 @@
 import api from '../api';
 
-const handleLogin = async (email, password) => {
+const handleLogin = async (email, password, platform) => {
     const loginHTTP = await api
         .post('logarApp', {
             email: email,
-            password: password
+            password: password,
+            device_name: platform
         })
         .then(function(response){
             return response

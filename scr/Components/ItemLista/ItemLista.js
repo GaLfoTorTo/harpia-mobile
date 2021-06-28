@@ -9,20 +9,10 @@ import {RectButton} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import estilo from './estilo';
 
-const ItemLista = ({id, nome, cpf_cnpj, open}) => {
+const ItemLista = ({data, open}) => {
 
-    /* var lastTap = 0;
-    const getDoubleTap = () => {
-        const now = new Date().getTime();
-        const delta = now - lastTap;
-        const DOUBLE_PRESS_DELAY = 300;
-
-        if(delta < DOUBLE_PRESS_DELAY){
-            setOpen(true)
-        }
-        lastTap = now
-    } */
-
+    const dados = Object.entries(data);
+    //console.warn(dados)
     const Acoes = () => {
         return (
             <View style={estilo.acoes}>
@@ -31,7 +21,7 @@ const ItemLista = ({id, nome, cpf_cnpj, open}) => {
             </TouchableOpacity> */}
                 <TouchableOpacity
                     style={estilo.editar}
-                    onPress={() => console.warn(`editar ${id}`)}
+                    onPress={() => console.warn(`editar ${data.id}`)}
                 >
                     <Icon name='edit' size={20} color='black' />
                 </TouchableOpacity>
@@ -51,15 +41,15 @@ const ItemLista = ({id, nome, cpf_cnpj, open}) => {
                 onPress={() => open()}
             >
                 <View style={estilo.campoId}>
-                    <Text>{id}</Text>
+                    <Text>{data.id}</Text>
                 </View>
                 <View style={estilo.div}></View>
                 <View style={estilo.campos}>
-                    <Text>{nome}</Text>
+                    <Text style={estilo.textCampos}>{dados[1][1]}</Text>
                 </View>
                 <View style={estilo.div}></View>
                 <View style={estilo.campos}>
-                    <Text>{cpf_cnpj}</Text>
+                    <Text style={estilo.textCampos}>{dados[2][1]}</Text>
                 </View>
             </RectButton>
         </Swipeable>

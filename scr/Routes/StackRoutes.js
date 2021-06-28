@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import DrawerRoutes from './DrawerRoutes';
 import Login from '../Pages/Login/Login';
 import HeaderButton from '../Components/Botao/HeaderButton';
-import Clientes from '../Pages/Clientes/Clientes';
+import Listagem from '../Pages/Listagem/Listagem';
 
 const Stack = createStackNavigator();
 
@@ -29,10 +29,9 @@ const StackRoutes = ({navigation}) => {
                         headerShown: false
                     }}
                 />
-                
                 <Stack.Screen
-                    name='Clientes'
-                    component={Clientes}
+                    name='Listagem'
+                    component={Listagem}
                 />
             </Stack.Navigator>
         </NavigationContainer>

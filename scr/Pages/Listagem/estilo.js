@@ -107,6 +107,19 @@ const estilo = StyleSheet.create({
         borderLeftColor: 'rgb(200, 200, 200)',
         backgroundColor: 'rgba(200, 200, 200, 0.3)'
     },
+    vazio: {
+        padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 5,
+        margin: 5,
+        width: '97%',
+        height: '20%',
+        backgroundColor: 'rgb(0,150,170)'
+    },
+    textVazio: {
+        color: 'white'
+    },
     labels: {
         flexDirection: 'row',
         borderBottomWidth: 1,

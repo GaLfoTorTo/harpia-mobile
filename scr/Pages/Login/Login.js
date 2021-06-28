@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import {SafeAreaView, View, Image, TextInput, Text, TouchableOpacity} from 'react-native';
+import {
+    SafeAreaView,
+    View,
+    Image,
+    TextInput,
+    Text,
+    TouchableOpacity,
+    Platform
+} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Load from '../../Components/Load';
@@ -12,15 +20,17 @@ const Login = ({navigation}) => {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
+    const plataforma = Platform.OS
 
     const Logar = async () => {
         setLoading(true);
         if(email == '' || email == undefined || password == '' || password == undefined){
             setMessage('Login e Senha são obrigátorios');
         }else{
-            const resposta = await handleLogin(email, password);
+            const resposta = await handleLogin(email, password, plataforma);
             if(resposta.data != ''){
-                navigation.replace('Dashboard', {resposta: resposta});
+                console.warn(resposta)
+                navigation.replace('Dashboard');
             }else{
                 setLoading(false);
                 setMessage('Login ou Senha inválidos');

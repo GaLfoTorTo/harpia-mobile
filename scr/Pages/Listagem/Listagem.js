@@ -15,17 +15,17 @@ import Listar from '../../Api/Listar';
 import ItemLista from '../../Components/ItemLista/ItemLista';
 import estilo from './estilo';
 
-const Clientes = ({navigation, route}) => {
+const Listagem = ({navigation, route}) => {
 
     const routeInfo = route.params.item;
     const [datas, setDatas] = useState([]);
     const [filtered, setFiltered] = useState([]);
     const [open, setOpen] = useState(false);
-
+    
     useEffect(() => {
         Listar(setDatas, routeInfo.route);
     },[])
-
+    
     var lastTap = 0;
     const getDoubleTap = (item) => {
         const now = new Date().getTime();
@@ -37,9 +37,10 @@ const Clientes = ({navigation, route}) => {
         }
         lastTap = now
     }
-
-    if(datas == undefined || datas == '')
+    console.warn(typeof datas)
+    if (datas.length <= 0) {
         return (<Load />)
+    }
 
     return(
         <SafeAreaView style={estilo.container}>
@@ -72,7 +73,7 @@ const Clientes = ({navigation, route}) => {
                                 keyExtractor={(item, index) => index.toString()}
                                 renderItem={({ item, index }) => {
                                     return (
-                                        <View style={estilo.contentText}>
+                                        <View style={estilo.contentText}> 
                                             <Text style={estilo.labelModal}>{item[0].charAt(0).toUpperCase()+item[0].substr(1)}:</Text>
                                             <Text style={estilo.textModal}>{item[1]}</Text>
                                         </View>
@@ -89,7 +90,7 @@ const Clientes = ({navigation, route}) => {
             >
                 <View style={estilo.headerCard}>
                     <RectButton style={estilo.botaoNovo}>
-                        <Text style={estilo.textoBotao}>Novo {routeInfo.title}</Text>
+                        <Text style={estilo.textoBotao}>Novo {routeInfo.buttonName}</Text>
                         <Icon name='plus' size={20} color='white' />
                     </RectButton>
                     <View style={estilo.pesquisar}>
@@ -107,10 +108,15 @@ const Clientes = ({navigation, route}) => {
                 <View style={estilo.labels}>
                     <Text style={estilo.labelId}>#</Text>
                     <View style={estilo.div}></View>
-                    <Text style={estilo.label}>Nome</Text>
+                    <Text style={estilo.label}>{routeInfo.campo1}</Text>
                     <View style={estilo.div}></View>
-                    <Text style={estilo.label}>CPF/CNPJ</Text>
+                    <Text style={estilo.label}>{routeInfo.campo2}</Text>
                 </View>
+                {datas == undefined || datas == "" &&
+                    <View style={estilo.vazio}>
+                        <Text style={estilo.textVazio}>Nenhum registro encontrado!</Text>
+                    </View>
+                }
                 <FlatList 
                     data={datas}
                     showsVerticalScrollIndicator={false}
@@ -120,9 +126,7 @@ const Clientes = ({navigation, route}) => {
                         return(
                             <View style={estilo.table}>
                                 <ItemLista
-                                    id={item.id}
-                                    nome={item.nome}
-                                    cpf_cnpj={item.cpf_cnpj}
+                                    data={item}
                                     open={() => getDoubleTap(item)}
                                 />
                             </View>
@@ -134,4 +138,4 @@ const Clientes = ({navigation, route}) => {
     );
 }
 
-export default Clientes;
+export default Listagem;

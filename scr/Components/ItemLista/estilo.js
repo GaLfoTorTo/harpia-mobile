@@ -23,6 +23,9 @@ const estilo = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    textCampos: {
+        textAlign: "center"
+    },
     div: {
         width: 1,
         height: '100%',
