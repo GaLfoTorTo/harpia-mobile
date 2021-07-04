@@ -24,6 +24,7 @@ const Listagem = ({navigation, route}) => {
     const [modalVer, setModalVer] = useState(false);
     const [modalDeletar, setModalDeletar] = useState(false);
     const [modalMensagem, setModalMensagem] = useState(false);
+    const [autoClose, setAutoClose] = useState(false);
     const [id, setId] = useState(id);
     const [mensagem, setMensagem] = useState('');
 
@@ -52,26 +53,30 @@ const Listagem = ({navigation, route}) => {
         }
         lastTap = now
     }
+
     const excluir = async () => {
         setModalMensagem(true);
         setDatas(undefined);
         setModalDeletar(false);
+        setAutoClose(true)
         await Deletar(setMensagem, routeInfo.route, id);
     }
-
 
     const hideMensagem = () => {
         setMensagem('');
         setModalMensagem(false)
+        setAutoClose(false)
+    }
+
+    if (autoClose == true) {
+        setTimeout(() => {
+            hideMensagem()
+        }, 5000)
     }
 
     if (datas == undefined ) {
-        if(mensagem != ''){
-            hideMensagem()
-        }
         return (<Load />)
     }
-    
 
     return(
         <SafeAreaView style={estilo.container}>

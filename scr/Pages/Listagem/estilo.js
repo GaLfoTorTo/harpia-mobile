@@ -18,7 +18,7 @@ const estilo = StyleSheet.create({
     cardMensagem: {
         width: '57%',
         height: 70,
-        backgroundColor: 'rgba(0, 255, 0, 0.7)',
+        backgroundColor: 'rgba(0, 255, 10, 0.7)',
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'center',
