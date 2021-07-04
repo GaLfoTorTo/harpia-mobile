@@ -9,8 +9,45 @@ const estilo = StyleSheet.create({
         padding: 5
     },
 
-    //modal 
-    containerModal: {
+    //title header text
+
+    titleHeader: {
+        color: Colors.botoes.primary
+    },
+    //modal mensagem
+    cardMensagem: {
+        width: '57%',
+        height: 70,
+        backgroundColor: 'rgba(0, 255, 0, 0.7)',
+        borderRadius: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'flex-start',
+        padding: 5,
+        position: 'relative',
+        bottom: 162,
+        left: 140
+    },
+    cardMensagemDanger: {
+        width: '57%',
+        height: 70,
+        backgroundColor: 'rgba(255, 0, 0, 0.7)',
+        borderRadius: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'flex-start',
+        padding: 5,
+        position: 'relative',
+        bottom: 162,
+        left: 140
+    },
+    textMensagem:{
+        color: 'white',
+        fontSize: 15,
+        fontWeight: 'bold'
+    },
+    //modal ver
+    containerModalVer: {
         alignSelf: 'center',
         borderRadius: 15,
         backgroundColor: Colors.botoes.ligth,
@@ -28,13 +65,10 @@ const estilo = StyleSheet.create({
         width: '100%',
         height: 1
     },
-    titleModal: {
+    titleModalVer: {
         flex: 1,
         fontSize: 23,
         color: Colors.botoes.dark
-    },
-    contentModal: {
-        //padding: 7,
     },
     contentText:{
         margin: 7,
@@ -50,10 +84,60 @@ const estilo = StyleSheet.create({
     textModal: {
         fontSize: 17,
     },
-    iconeModal: {
+    iconeModalVer: {
         color: Colors.botoes.dark
     },
 
+    //modal deletar
+    containerModalDeletar: {
+        alignSelf: 'center',
+        borderRadius: 15,
+        backgroundColor: Colors.botoes.ligth,
+        padding: 5,
+        width: '100%',
+        height: '55%'
+    },
+    contentDeletar: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    iconeModalDeletar: {
+        color: 'rgb(255,120,0)',
+    },
+    titleDeletar: {
+        color: Colors.botoes.secondary,
+        fontSize: 30,
+        fontWeight: 'bold'
+    },
+    subTitleDeletar: {
+        color: Colors.botoes.secondary,
+        fontSize: 17,
+    },
+    botoesDeletar: {
+        flex: 0.3,
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    },
+    botaoConfirmar: {
+        backgroundColor: Colors.botoes.primary,
+        padding: 10,
+        borderRadius: 5,
+        height: 45,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    botaoCancelar: {
+        backgroundColor: Colors.botoes.danger,
+        padding: 10,
+        borderRadius: 5,
+        height: 45,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    textoBotaoModal: {
+        color: 'white',
+    },
     cardLista: {
         backgroundColor: Colors.botoes.ligth,
         width: '98%',

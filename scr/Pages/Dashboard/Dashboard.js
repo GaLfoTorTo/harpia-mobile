@@ -31,7 +31,7 @@ const Dashboard = ({ navigation, route}) => {
     const navegar = (item) => {
         if(item.linkListar == 'Listar'){
             setOpen(false);
-            navigation.navigate('Listagem', { item });
+            navigation.navigate('Listagem', {item });
         }else{
             setOpen(false);
             navigation.navigate(item.title);
@@ -52,6 +52,7 @@ const Dashboard = ({ navigation, route}) => {
                     animationOut='zoomOut'
                     backdropColor='grey'
                     backdropOpacity={0.5}
+                    onBackdropPress={() => setOpen(false)}
                     onBackButtonPress={() => setOpen(false)}
                 >
                     <View style={estilo.containerModal}>

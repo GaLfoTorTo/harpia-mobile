@@ -9,23 +9,23 @@ import {RectButton} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import estilo from './estilo';
 
-const ItemLista = ({data, open}) => {
+const ItemLista = ({data, open, deletar}) => {
 
     const dados = Object.entries(data);
-    //console.warn(dados)
+    
     const Acoes = () => {
         return (
             <View style={estilo.acoes}>
-                {/* <TouchableOpacity style={estilo.ver}>
-                <Icon name='eye' size={20} color='white' />
-            </TouchableOpacity> */}
                 <TouchableOpacity
                     style={estilo.editar}
                     onPress={() => console.warn(`editar ${data.id}`)}
                 >
                     <Icon name='edit' size={20} color='black' />
                 </TouchableOpacity>
-                <TouchableOpacity style={estilo.excluir}>
+                <TouchableOpacity 
+                    style={estilo.excluir}
+                    onPress={() => deletar()}
+                >
                     <Icon name='trash' size={20} color='white' />
                 </TouchableOpacity>
             </View>

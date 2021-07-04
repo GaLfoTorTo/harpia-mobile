@@ -29,8 +29,7 @@ const Login = ({navigation}) => {
         }else{
             const resposta = await handleLogin(email, password, plataforma);
             if(resposta.data != ''){
-                console.warn(resposta)
-                navigation.replace('Dashboard');
+                                navigation.replace('Dashboard');
             }else{
                 setLoading(false);
                 setMessage('Login ou Senha inválidos');

@@ -14,17 +14,32 @@ import Load from '../../Components/Load';
 import Listar from '../../Api/Listar';
 import ItemLista from '../../Components/ItemLista/ItemLista';
 import estilo from './estilo';
+import Deletar from '../../Api/Deletar';
 
 const Listagem = ({navigation, route}) => {
 
     const routeInfo = route.params.item;
-    const [datas, setDatas] = useState([]);
+    const [datas, setDatas] = useState(undefined);
     const [filtered, setFiltered] = useState([]);
-    const [open, setOpen] = useState(false);
-    
+    const [modalVer, setModalVer] = useState(false);
+    const [modalDeletar, setModalDeletar] = useState(false);
+    const [modalMensagem, setModalMensagem] = useState(false);
+    const [id, setId] = useState(id);
+    const [mensagem, setMensagem] = useState('');
+
+    const changeModal = (escolha, deleteId) => {
+        if(escolha == 'ver'){
+            setModalVer(true)
+        }else{
+            setId(deleteId)
+            setModalDeletar(true)
+        }
+    }
+
     useEffect(() => {
+        navigation.setOptions({ title: routeInfo.title, headerTitleStyle: estilo.titleHeader})
         Listar(setDatas, routeInfo.route);
-    },[])
+    },datas)
     
     var lastTap = 0;
     const getDoubleTap = (item) => {
@@ -33,38 +48,72 @@ const Listagem = ({navigation, route}) => {
         const DOUBLE_PRESS_DELAY = 300;
         if (delta < DOUBLE_PRESS_DELAY) {
             setFiltered(item);
-            setOpen(true);
+            changeModal('ver')
         }
         lastTap = now
     }
-    console.warn(typeof datas)
-    if (datas.length <= 0) {
+    const excluir = async () => {
+        setModalMensagem(true);
+        setDatas(undefined);
+        setModalDeletar(false);
+        await Deletar(setMensagem, routeInfo.route, id);
+    }
+
+
+    const hideMensagem = () => {
+        setMensagem('');
+        setModalMensagem(false)
+    }
+
+    if (datas == undefined ) {
+        if(mensagem != ''){
+            hideMensagem()
+        }
         return (<Load />)
     }
+    
 
     return(
         <SafeAreaView style={estilo.container}>
-            {open == true &&
+            {mensagem != '' &&
                 <Modal
-                isVisible={open}
+                isVisible={modalMensagem}
+                animationIn='slideInRight'
+                animationOut='slideOutRight'
+                backdropColor='grey'
+                backdropOpacity={0.3}
+                onBackdropPress={() => hideMensagem()}
+                onBackButtonPress={() => hideMensagem()}
+                >   
+                    <TouchableOpacity
+                    style={[estilo.cardMensagem, mensagem == 'Registro não encontrado!' && estilo.cardMensagemDanger]}
+                        onPress={()=> hideMensagem()}
+                    >
+                        <Text style={estilo.textMensagem}>{mensagem}</Text>
+                    </TouchableOpacity>
+                </Modal>
+            }
+            {modalVer == true &&
+                <Modal
+                isVisible={modalVer}
                 animationIn='zoomInDown'
                 animationOut='zoomOut'
-                backdropColor='grey'
+                backdropColor='black'
                 backdropOpacity={0.5}
-                onBackButtonPress={() => setOpen(false)}
+                onBackdropPress={() => setModalVer(false)}
+                onBackButtonPress={() => setModalVer(false)}
                 >
-                    <View style={estilo.containerModal}>
+                    <View style={estilo.containerModalVer}>
                         <View style={estilo.headerModal}>
-                            <Text style={estilo.titleModal}>{routeInfo.title}</Text>
+                            <Text style={estilo.titleModalVer}>{routeInfo.title}</Text>
                             <TouchableOpacity
-                                onPress={() => setOpen(false)}
+                                onPress={() => setModalVer(false)}
                             >
-                                <Icon name='times' size={30} style={estilo.iconeModal} />
+                                <Icon name='times' size={30} style={estilo.iconeModalver} />
                             </TouchableOpacity>
                         </View>
                         <View style={estilo.divModal}></View>
-                        <ScrollView 
-                            style={estilo.contentModal}
+                        <ScrollView
                             horizontal={true}
                         >
                             <FlatList
@@ -81,6 +130,39 @@ const Listagem = ({navigation, route}) => {
                                 }}
                             />
                         </ScrollView>
+                    </View>
+                </Modal>
+            }
+            {modalDeletar == true &&
+                <Modal
+                    isVisible={modalDeletar}
+                    animationIn='zoomInDown'
+                    animationOut='zoomOutDown'
+                    backdropColor='black'
+                    backdropOpacity={0.5}
+                    onBackdropPress={() => setModalDeletar(false)}
+                    onBackButtonPress={() => setModalDeletar(false)}
+                >
+                    <View style={estilo.containerModalDeletar}>
+                        <View style={estilo.contentDeletar}>
+                        <Icon name='exclamation-circle' size={100} light={true} style={estilo.iconeModalDeletar}/>
+                            <Text style={estilo.titleDeletar}>Tem Certeza?</Text>
+                            <Text style={estilo.subTitleDeletar}>Esta ação não pode ser desfeita!</Text>
+                        </View>
+                        <View style={estilo.botoesDeletar}>
+                            <TouchableOpacity
+                                style={estilo.botaoConfirmar}
+                                onPress={() => excluir()}
+                            >
+                                <Text style={estilo.textoBotaoModal}>Sim, Deletar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={estilo.botaoCancelar}
+                                onPress={() => setModalDeletar(false)}
+                            >
+                                <Text style={estilo.textoBotaoModal}>Cancelar</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </Modal>
             }
@@ -112,7 +194,7 @@ const Listagem = ({navigation, route}) => {
                     <View style={estilo.div}></View>
                     <Text style={estilo.label}>{routeInfo.campo2}</Text>
                 </View>
-                {datas == undefined || datas == "" &&
+                {datas == undefined &&
                     <View style={estilo.vazio}>
                         <Text style={estilo.textVazio}>Nenhum registro encontrado!</Text>
                     </View>
@@ -128,6 +210,7 @@ const Listagem = ({navigation, route}) => {
                                 <ItemLista
                                     data={item}
                                     open={() => getDoubleTap(item)}
+                                    deletar={() => changeModal('deletar',item.id)}
                                 />
                             </View>
                         );
