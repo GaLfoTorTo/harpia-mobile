@@ -54,6 +54,9 @@ const Listagem = ({navigation, route}) => {
         lastTap = now
     }
 
+    const editarCliente = (data, routeInfo) => {
+        navigation.navigate('ClientesForm', {data, routeInfo})
+    }
     const excluir = async () => {
         setModalMensagem(true);
         setDatas(undefined);
@@ -176,7 +179,10 @@ const Listagem = ({navigation, route}) => {
                 showsVerticalScrollIndicator={false}
             >
                 <View style={estilo.headerCard}>
-                    <RectButton style={estilo.botaoNovo}>
+                    <RectButton 
+                        style={estilo.botaoNovo}
+                        onPress={() => navigation.navigate('ClientesForm', {routeInfo})}
+                    >
                         <Text style={estilo.textoBotao}>Novo {routeInfo.buttonName}</Text>
                         <Icon name='plus' size={20} color='white' />
                     </RectButton>
@@ -199,7 +205,7 @@ const Listagem = ({navigation, route}) => {
                     <View style={estilo.div}></View>
                     <Text style={estilo.label}>{routeInfo.campo2}</Text>
                 </View>
-                {datas == undefined &&
+                {datas == undefined || datas == '' &&
                     <View style={estilo.vazio}>
                         <Text style={estilo.textVazio}>Nenhum registro encontrado!</Text>
                     </View>
@@ -216,6 +222,8 @@ const Listagem = ({navigation, route}) => {
                                     data={item}
                                     open={() => getDoubleTap(item)}
                                     deletar={() => changeModal('deletar',item.id)}
+                                    editar={() => editarCliente(item, routeInfo)}
+                                    navigation={navigation}
                                 />
                             </View>
                         );

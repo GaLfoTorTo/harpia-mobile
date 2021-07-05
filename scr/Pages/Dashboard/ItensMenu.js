@@ -8,6 +8,7 @@ const ItensMenu = [
         campo1:'Nome',
         campo2:'Email',
         linkNovo: 'Novo',
+        linkEditar: 'Editar',
         linkListar: 'Listar',
         iconLink: 'circle-notch'
     },
@@ -20,6 +21,7 @@ const ItensMenu = [
         campo1:'Nome',
         campo2:'CPF/CNPJ',
         linkNovo: 'Novo',
+        linkEditar: 'Editar',
         linkListar: 'Listar',
         iconLink: 'circle-notch'
     },
@@ -32,6 +34,7 @@ const ItensMenu = [
         campo1:'Nome',
         campo2:'Email',
         linkNovo: 'Novo',
+        linkEditar: 'Editar',
         linkListar: 'Listar',
         iconLink: 'circle-notch'
     },
@@ -44,6 +47,7 @@ const ItensMenu = [
         campo1:'Título',
         campo2:'Código',
         linkNovo: 'Novo',
+        linkEditar: 'Editar',
         linkListar: 'Listar',
         iconLink: 'circle-notch'
     },
@@ -53,9 +57,10 @@ const ItensMenu = [
         title: 'Equipamentos',
         buttonName: 'Equipamento',
         route: 'equipamentos',
-        campo1:'Equipamento',
-        campo2:'Marca',
+        campo1:'Equipamento Próprio',
+        campo2:'Equipamento',
         linkNovo: 'Novo',
+        linkEditar: 'Editar',
         linkListar: 'Listar',
         iconLink: 'circle-notch'
     },
@@ -65,9 +70,10 @@ const ItensMenu = [
         title: 'Fornecedores',
         buttonName: 'Fornecedor',
         route: 'fornecedores',
-        campo1:'Razão Social',
+        campo1:'Tipo',
         campo2:'CNPJ',
         linkNovo: 'Novo',
+        linkEditar: 'Editar',
         linkListar: 'Listar',
         iconLink: 'circle-notch'
     },
@@ -80,6 +86,7 @@ const ItensMenu = [
         campo1:'Descrição',
         campo2:'Tipo serviço',
         linkNovo: 'Novo',
+        linkEditar: 'Editar',
         linkListar: 'Listar',
         iconLink: 'circle-notch'
     },
@@ -92,6 +99,7 @@ const ItensMenu = [
         campo1:'Setor',
         campo2:'Setor Pai',
         linkNovo: 'Novo',
+        linkEditar: 'Editar',
         linkListar: 'Listar',
         iconLink: 'circle-notch'
     },
@@ -100,10 +108,11 @@ const ItensMenu = [
         icone: 'user',
         title: 'Usuarios',
         buttonName: 'Usuário',
-        route: 'users',
+        route: 'user',
         campo1:'Nome',
         campo2:'Email',
         linkNovo: 'Novo',
+        linkEditar: 'Editar',
         linkListar: 'Listar',
         iconLink: 'circle-notch'
     },
