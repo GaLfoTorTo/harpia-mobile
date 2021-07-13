@@ -5,7 +5,7 @@ import DrawerRoutes from './DrawerRoutes';
 import Login from '../Pages/Login/Login';
 import HeaderButton from '../Components/Botao/HeaderButton';
 import Listagem from '../Pages/Listagem/Listagem';
-import ClientesForm from '../Pages/Clientes/ClientesForm';
+import Form from '../Pages/Form/Form';
 
 const Stack = createStackNavigator();
 
@@ -35,8 +35,8 @@ const StackRoutes = ({navigation}) => {
                     component={Listagem}
                 />
                 <Stack.Screen
-                    name='ClientesForm'
-                    component={ClientesForm}
+                    name='Form'
+                    component={Form}
                 />
             </Stack.Navigator>
         </NavigationContainer>

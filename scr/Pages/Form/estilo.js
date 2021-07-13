@@ -40,6 +40,31 @@ const estilo = StyleSheet.create({
         fontSize: 15,
         marginRight: 5
     },
+    botaoSalvar:{
+        alignItems: 'center',
+        alignSelf: 'flex-end',
+        margin: 10,
+        width: '30%',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        backgroundColor: Colors.botoes.success,
+        padding: 10,
+        borderRadius: 5
+    },
+    links: {
+        flexDirection: 'row',
+        paddingTop: 15,
+        paddingRight: 10,
+        alignItems: 'center',
+    },
+    textLink: {
+        fontSize: 13,
+        color: Colors.botoes.secondary
+    },
+    textLink2: {
+        color: Colors.botoes.primary,
+        fontSize: 18
+    }
 });
 
 export default estilo;

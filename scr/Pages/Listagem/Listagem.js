@@ -18,7 +18,7 @@ import Deletar from '../../Api/Deletar';
 
 const Listagem = ({navigation, route}) => {
 
-    const routeInfo = route.params.item;
+    const routeInfo = route.params?.item ? route.params.item : route.params.routeInfo;
     const [datas, setDatas] = useState(undefined);
     const [filtered, setFiltered] = useState([]);
     const [modalVer, setModalVer] = useState(false);
@@ -55,7 +55,7 @@ const Listagem = ({navigation, route}) => {
     }
 
     const editarCliente = (data, routeInfo) => {
-        navigation.navigate('ClientesForm', {data, routeInfo})
+        navigation.navigate('Form', {data, routeInfo})
     }
     const excluir = async () => {
         setModalMensagem(true);
@@ -181,7 +181,7 @@ const Listagem = ({navigation, route}) => {
                 <View style={estilo.headerCard}>
                     <RectButton 
                         style={estilo.botaoNovo}
-                        onPress={() => navigation.navigate('ClientesForm', {routeInfo})}
+                        onPress={() => navigation.navigate('Form', {routeInfo})}
                     >
                         <Text style={estilo.textoBotao}>Novo {routeInfo.buttonName}</Text>
                         <Icon name='plus' size={20} color='white' />
