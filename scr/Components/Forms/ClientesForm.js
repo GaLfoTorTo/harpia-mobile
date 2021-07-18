@@ -10,11 +10,9 @@ import {TextInputMask} from 'react-native-masked-input'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Modal from 'react-native-modal';
 import {useFormik} from 'formik';
-//import Editar from '../../Api/Editar';
 import Salvar from '../../Api/Salvar';
-import uf from '../../Components/uf';
-import Load from '../Load';
-import estilo from './estilo';
+import uf from '../uf';
+import estilo from './estilo'
 
 const ClientesForm = ({data, routeInfo}) => {
     const cliente = data;
@@ -230,7 +228,7 @@ const ClientesForm = ({data, routeInfo}) => {
                     <Text style={estilo.label}>UF:</Text>
                     <View style={estilo.input}>
                         <RNPickerSelect 
-                            placeholder={{label: 'Selecione...', value: null}}
+                            placeholder={values.uf == "" ? { label: 'Selecione...', value: null } : { label: values.uf, value: values.uf }}
                             onValueChange={handleChange('uf')}
                             value={values.uf}
                             items={uf}
@@ -267,7 +265,7 @@ const ClientesForm = ({data, routeInfo}) => {
                     <Text style={estilo.label}>Tipo de Unidade:</Text>
                     <View style={estilo.input}>
                         <RNPickerSelect
-                            placeholder={{ label: 'Selecione...', value: null }}
+                            placeholder={values.tipo_unidade == "" ? { label: 'Selecione...', value: null } : {label: values.tipo_unidade, value: values.tipo_unidade}}
                             onValueChange={handleChange('tipo_unidade')}
                             value={values.tipo_unidade}
                             items={[

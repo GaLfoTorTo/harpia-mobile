@@ -13,7 +13,7 @@ const estilo = StyleSheet.create({
     },
     cardForm: {
         backgroundColor: Colors.botoes.ligth,
-        width: '98%',
+        width: '99%',
         height: '90%',
         borderRadius: 5,
         borderWidth: 1,
@@ -28,6 +28,9 @@ const estilo = StyleSheet.create({
         alignItems: 'flex-start',
         borderBottomWidth: 1,
         borderBottomColor: 'rgb(200, 200, 200)'
+    },
+    headerForm2: {
+        justifyContent: 'flex-end'
     },
     botaoNovo: {
         backgroundColor: Colors.botoes.primary,

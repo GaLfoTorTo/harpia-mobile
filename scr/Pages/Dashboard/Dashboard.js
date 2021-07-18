@@ -28,14 +28,13 @@ const Dashboard = ({ navigation, route}) => {
 
     }
 
-    const navegar = (item) => {
-        if(item.linkListar == 'Listar'){
-            setOpen(false);
-            navigation.navigate('Listagem', {item });
-        }else{
-            setOpen(false);
-            navigation.navigate(item.title);
-        }
+    const navegarListagem = (item) => {
+        setOpen(false);
+        navigation.navigate('Listagem', {item });
+    }
+    const navegarNovo = (item) => {
+        setOpen(false);
+        navigation.navigate(`Form`, { item });
     }
     useEffect(() => {
         if (menuName !== undefined) {
@@ -87,14 +86,14 @@ const Dashboard = ({ navigation, route}) => {
                                                             style={{width: '50%'}}
                                                             title={item.linkNovo}
                                                             titleStyle={estilo.titleCardMenu}
-                                                            onPress={() => console.warn('teste')}
+                                                            onPress={() => navegarNovo(item)}
                                                             left={props => <Icon name={item.iconLink} size={15} style={estilo.iconeLink} />}
                                                         />
                                                         <List.Item
                                                             style={{ width: '50%' }}
                                                             title={item.linkListar}
                                                             titleStyle={estilo.titleCardMenu}
-                                                            onPress={() => navegar(item)}
+                                                            onPress={() => navegarListagem(item)}
                                                             left={props => <Icon name={item.iconLink} size={15} style={estilo.iconeLink} />}
                                                         />
                                                     </View>
