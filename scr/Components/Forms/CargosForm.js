@@ -5,15 +5,14 @@ import {
     Text,
     TouchableOpacity,
 } from 'react-native';
-import {TextInputMask} from 'react-native-masked-input'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Modal from 'react-native-modal';
 import {useFormik} from 'formik';
 import Salvar from '../../Api/Salvar';
 import estilo from './estilo';
 
-const CargodForm = ({data, routeInfo}) => {
-    const colaborador = data;
+const CargosForm = ({data, routeInfo}) => {
+    const cargo = data;
     const [mensagem, setMensagem] = useState('')
     const [modalMensagem, setModalMensagem] = useState(false);
     const [autoClose, setAutoClose] = useState(false);
@@ -38,12 +37,12 @@ const CargodForm = ({data, routeInfo}) => {
     
     const {handleChange, handleBlur, handleSubmit, values} = useFormik({
         initialValues: { 
-            id: colaborador == undefined ? null : colaborador.id,
-            cargo: colaborador == undefined ? '' : colaborador.cargo,
-            formacao: colaborador == undefined ? '' : colaborador.formacao,
-            descricao: colaborador == undefined ? '' : colaborador.descricao,
-            requisitos: colaborador == undefined ? '' : colaborador.requisitos,
-            treinamentos: colaborador == undefined ? '': colaborador.treinamentos,
+            id: cargo == undefined ? null : cargo.id,
+            cargo: cargo == undefined ? '' : cargo.cargo,
+            formacao: cargo == undefined ? '' : cargo.formacao,
+            descricao: cargo == undefined ? '' : cargo.descricao,
+            requisitos: cargo == undefined ? '' : cargo.requisitos,
+            treinamentos: cargo == undefined ? '': cargo.treinamentos,
 
         },
         onSubmit: values => salve()
@@ -141,4 +140,4 @@ const CargodForm = ({data, routeInfo}) => {
     )
 }
 
-export default CargodForm;
+export default CargosForm;

@@ -10,7 +10,7 @@ import {TextInputMask} from 'react-native-masked-input'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Modal from 'react-native-modal';
 import {useFormik} from 'formik';
-import Buscar from '../../Api/Busca';
+import Buscar from '../../Api/Buscar';
 import Salvar from '../../Api/Salvar';
 import uf from '../uf';
 import estilo from './estilo';

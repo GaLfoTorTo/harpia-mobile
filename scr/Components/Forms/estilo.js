@@ -30,6 +30,12 @@ const estilo = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'rgb(200, 200, 200)'
     },
+    inputDate: {
+        padding: 9, 
+    },
+    textInputData: {
+        color: 'rgba(200, 200, 200, 0.7)'
+    },
     textoBotao: {
         color: 'white',
         fontSize: 15,

@@ -6,18 +6,41 @@ const estilo = StyleSheet.create({
         flex: 1,
         backgroundColor: 'rgb(52,58,64)'
     },
+    logoImg:{
+        width: 35,
+        height: 35,
+        borderRadius: 15
+    },
+    cardLogo:{
+        flexDirection: 'row',
+        paddingVertical: 10,
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+    },
+    tituloLogo: {
+        color:Colors.botoes.ligth,
+        fontSize: 20
+    },
     cardUser: {
-        height: 200,
+        paddingVertical: 10,
         alignItems: 'center',
         justifyContent: 'center',
+        position: 'relative',
+        right: 15
+    },
+    div:{
         borderBottomWidth: 1,
-        borderBottomColor: Colors.botoes.ligth
+        borderBottomColor: 'rgba(200, 200, 200, 0.5)'
     },
     userImg: {
-        width: 70,
-        height: 70,
+        width: 50,
+        height: 50,
         borderRadius: 40,
         marginBottom: 10
+    },
+    perfilName:{
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     userName: {
         color: Colors.botoes.ligth,

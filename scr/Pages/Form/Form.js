@@ -1,20 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
     SafeAreaView,
-    TextInput,
     TouchableOpacity,
     View,
     ScrollView,
     Text
 } from 'react-native';
-import { FlatList, RectButton } from 'react-native-gesture-handler';
+import { RectButton } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-//import Editar from '../../Api/Editar';
 import estilo from './estilo';
 
 import CargosForm from '../../Components/Forms/CargosForm';
 import ClientesForm from '../../Components/Forms/ClientesForm';
 import ColaboradoresForm from '../../Components/Forms/ColaboradoresForm';
+import DocumentosForm from '../../Components/Forms/DocumentosForm';
+import EquipamentosForm from '../../Components/Forms/EquipamentosForm';
+import SetoresForm from '../../Components/Forms/SetoresForm';
+import ServicosForm from '../../Components/Forms/ServicosForm';
+import Vazio from '../../Components/Vazio'
+
 
 const Form = ({navigation, route}) => {
     const routeInfo = route.params?.item ? route.params.item : route.params.routeInfo;
@@ -64,6 +68,34 @@ const Form = ({navigation, route}) => {
                             return <ClientesForm data={data} routeInfo={routeInfo} />
                         case 'Colaboradores' :
                             return <ColaboradoresForm data={data} routeInfo={routeInfo}/>
+                        case 'Setores':
+                            return <SetoresForm data={data} routeInfo={routeInfo} />
+                        case 'Documentos':
+                            return <DocumentosForm data={data} routeInfo={routeInfo} />
+                        case 'Equipamentos':
+                            return <EquipamentosForm data={data} routeInfo={routeInfo} />
+                        case 'Serviços':
+                            return <ServicosForm data={data} routeInfo={routeInfo} />
+                        case 'Ações Propostas':
+                            return <Vazio />
+                        case 'Análise Crítica':
+                            return <Vazio />
+                        case 'Inspeção de Recebido':
+                            return <Vazio />
+                        case 'RNC':
+                            return <Vazio />
+                        case 'Participantes Treinamento':
+                            return <Vazio />
+                        case 'Procedimentos':
+                            return <Vazio />
+                        case 'Registro de Ocorrência':
+                            return <Vazio />
+                        case 'Reclamações e Sugestões':
+                            return <Vazio />
+                        case 'Registro Treinamento':
+                            return <Vazio />
+                        case 'Treinamento':
+                            return <Vazio />
                         default :
                             break;
                     }
