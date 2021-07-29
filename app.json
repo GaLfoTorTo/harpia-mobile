@@ -6,9 +6,9 @@
     "orientation": "portrait",
     "icon": "./assets/img/AdminLTELogo.png",
     "splash": {
-      "image": "./assets/harpianimation.json",
+      "image": "",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#f8f9fa"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,11 +22,11 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/img/AdminLTELogo.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#f8f9fa"
       }
     },
     "web": {
-      "favicon": "./assets/img/AdminLTELogo.png"
+      "favicon": "./assets/favicon.png"
     }
   }
 }

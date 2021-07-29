@@ -6,6 +6,7 @@ import Login from '../Pages/Login/Login';
 import HeaderButton from '../Components/Botao/HeaderButton';
 import Listagem from '../Pages/Listagem/Listagem';
 import Form from '../Pages/Form/Form';
+import Splash from '../Components/Splash';
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,13 @@ const StackRoutes = ({navigation}) => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
+                <Stack.Screen
+                    name='Splash'
+                    component={Splash}
+                    options={{
+                        headerShown: false
+                    }}
+                />
                 <Stack.Screen
                     name='Login'
                     component={Login}
