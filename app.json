@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/img/AdminLTELogo.png",
         "backgroundColor": "#f8f9fa"
-      }
+      },
+      "package": "com.galfotorto.harpiamobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"

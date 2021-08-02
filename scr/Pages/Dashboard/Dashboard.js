@@ -7,11 +7,13 @@ import {
     ScrollView,
     FlatList
 } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
 import Modal from 'react-native-modal';
 import { List } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import estilo from './estilo';
 import ItensMenu from './ItensMenu';
+import ItensSideBar from '../../Components/Sidebar/ItensSideBar'
 
 const Dashboard = ({ navigation, route}) => {
     const [open, setOpen] = useState(false);
@@ -43,7 +45,7 @@ const Dashboard = ({ navigation, route}) => {
     },[menuName])
 
     return(
-        <SafeAreaView style={estilo.container}>
+        <ScrollView style={estilo.container}>
             {open == true && 
                 <Modal
                     isVisible={open}
@@ -107,7 +109,55 @@ const Dashboard = ({ navigation, route}) => {
                     </View>
                 </Modal>
             }
-        </SafeAreaView>
+            <View style={estilo.containerCard}>
+                <View style={[estilo.card, estilo.cardProcedimentos]} >
+                    <Icon name='clipboard-check' size={60} style={estilo.iconProcedimentos}/>
+                    <Text style={estilo.textVisualizar}>Procedimentos</Text>
+                    <RectButton
+                        style={[estilo.visualizar, estilo.visualizarProcedimentos]}
+                        onPress={() => navegarListagem(ItensSideBar[5])}
+                    >
+                        <Text style={estilo.textVisualizar}>Visualizar</Text>
+                        <Icon name='arrow-circle-right' size={15} style={estilo.iconVisualizar} />
+                    </RectButton>
+                </View>
+                <View style={[estilo.card, estilo.cardServicos]} >
+                    <Icon name='toolbox' size={60} style={estilo.iconServicos}/>
+                    <Text style={estilo.textVisualizar}>Serviços</Text>
+                    <RectButton
+                        style={[estilo.visualizar, estilo.visualizarServicos]}
+                        onPress={() => navegarListagem(ItensMenu[6])}
+                    >
+                        <Text style={estilo.textVisualizar}>Visualizar</Text>
+                        <Icon name='arrow-circle-right' size={15} style={estilo.iconVisualizar} />
+                    </RectButton>
+                </View>
+            </View>
+            <View style={estilo.containerCard}>
+                <View style={[estilo.card, estilo.cardColaboradores]} >
+                    <Icon name='users' size={60} style={estilo.iconColaboradores}/>
+                    <Text style={[estilo.textVisualizar, estilo.textWarning]}>Colaboradores</Text>
+                    <RectButton
+                        style={[estilo.visualizar, estilo.visualizarColaboradores]}
+                        onPress={() => navegarListagem(ItensMenu[2])}
+                    >
+                        <Text style={[estilo.textVisualizar, estilo.textWarning]}>Visualizar</Text>
+                        <Icon name='arrow-circle-right' size={15} style={[estilo.iconVisualizar, estilo.textWarning]} />
+                    </RectButton>
+                </View>
+                <View style={[estilo.card, estilo.cardEquipamentos]} >
+                    <Icon name='microscope' size={60} style={estilo.iconEquipamentos}/>
+                    <Text style={estilo.textVisualizar}>Equipamentos</Text>
+                    <RectButton
+                        style={[estilo.visualizar, estilo.visualizarEquipamentos]}
+                        onPress={() => navegarListagem(ItensMenu[4])}
+                    >
+                        <Text style={estilo.textVisualizar}>Visualizar</Text>
+                        <Icon name='arrow-circle-right' size={15} style={estilo.iconVisualizar} />
+                    </RectButton>
+                </View>
+            </View>
+        </ScrollView>
     );
 }
 

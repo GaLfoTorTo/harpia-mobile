@@ -8,10 +8,9 @@ const Splash = ({navigation}) => {
     const fadeIn = () => {
         Animated.timing(fadeAnim, {
             toValue: 1,
-            duration: 200,
+            duration: 1200,
             useNativeDriver: true
         }).start();
-        navigation.replace('Login')
     };
 
     return (
@@ -20,12 +19,12 @@ const Splash = ({navigation}) => {
                 source={require('../../assets/harpianimation.json')}
                 autoPlay
                 loop={false}
-                
                 onAnimationFinish={() => {
-                    fadeIn()
+                    navigation.replace('Login')
                 }}
                 style={estilo.load}
             />
+            {fadeIn()}
             <View style={estilo.cardTitulo}>
                 <Animated.Text  style={[estilo.titulo, {opacity: fadeAnim}]}>Harpia Mobile</Animated.Text>
             </View>
