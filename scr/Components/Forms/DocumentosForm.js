@@ -7,10 +7,11 @@ import {
     Platform,
 } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
-import DataTimePicker, { event} from '@react-native-community/datetimepicker';
+import DateTimePicker, { event} from '@react-native-community/datetimepicker';
 import {format, isBefore} from 'date-fns';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Modal from 'react-native-modal';
+import LottieView from 'lottie-react-native';
 import {useFormik} from 'formik';
 import Buscar from '../../Api/Buscar';
 import Salvar from '../../Api/Salvar';
@@ -19,7 +20,7 @@ import estilo from './estilo';
 const DocumentosForm = ({data, routeInfo}) => {
     const documento = data;
     const [mensagem, setMensagem] = useState('')
-    const [modalMensagem, setModalMensagem] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [autoClose, setAutoClose] = useState(false);
     const [tipoDocumento, setTipoDocumento] = useState('interno');
     const [localizacao, setLocalizacao] = useState(undefined);
@@ -39,15 +40,20 @@ const DocumentosForm = ({data, routeInfo}) => {
     },[])
 
     const salve = () => {
+        values.data_aprovacao = format(values.data_aprovacao, 'dd/MM/yyyy')
+        values.data_aprovacao = format(values.data_aprovacao, 'dd/MM/yyyy')
+        values.proxima_analise_critica_em = format(values.proxima_analise_critica_em, 'dd/MM/yyyy')
+        values.data_da_ultima_analise_critica = format(values.data_da_ultima_analise_critica, 'dd/MM/yyyy')
         Salvar(setMensagem, routeInfo.route, values)
-        setModalMensagem(true)
+        setLoading(true)
         setAutoClose(true)
     }
 
     const hideMensagem = () => {
         setMensagem('');
-        setModalMensagem(false)
+        setLoading(false)
         setAutoClose(false)
+        navigation.replace('Listagem', {item: routeInfo})
     }
 
     if (autoClose == true) {
@@ -111,22 +117,34 @@ const DocumentosForm = ({data, routeInfo}) => {
 
     return(
         <View style={estilo.form}>
-            {mensagem != '' &&
+            {loading == true &&
                 <Modal
-                    isVisible={modalMensagem}
-                    animationIn='slideInRight'
-                    animationOut='slideOutRight'
+                    isVisible={loading}
+                    animationIn='fadeIn'
+                    animationOut='fadeOut'
                     backdropColor='grey'
                     backdropOpacity={0.3}
                     onBackdropPress={() => hideMensagem()}
                     onBackButtonPress={() => hideMensagem()}
                 >
-                    <TouchableOpacity
-                        style={[estilo.cardMensagem, mensagem == 'Não foi possivel salvar!' && estilo.cardMensagemDanger]}
-                        onPress={() => hideMensagem()}
-                    >
-                        <Text style={estilo.textMensagem}>{mensagem}</Text>
-                    </TouchableOpacity>
+                    {mensagem != '' ?
+                        <TouchableOpacity
+                            style={[estilo.cardMensagem, mensagem == 'Não foi possivel salvar!' && estilo.cardMensagemDanger]}
+                            onPress={() => hideMensagem()}
+                        >
+                            <Text style={estilo.textMensagem}>{mensagem}</Text>
+                        </TouchableOpacity>
+                        :
+                        <View style={estilo.load}>
+                            {/* <ActivityIndicator size='large' color='white' /> */}
+                            <LottieView
+                                source={require('../../../assets/harpianimation.json')}
+                                autoPlay
+                                loop
+                                style={estilo.load}
+                            />
+                        </View>
+                    }
                 </Modal>
             }
             <View style={estilo.cpf_cnpj}>
@@ -218,7 +236,7 @@ const DocumentosForm = ({data, routeInfo}) => {
                             <Text style={estilo.textInputData}>{format(DataAprovacao, 'dd/MM/yyyy')}</Text>
                         </TouchableOpacity>
                         {showDataAprovacao == true &&
-                        <DataTimePicker
+                        <DateTimePicker
                             mode='date'         
                             value={values.data_aprovacao}
                             onChange={mudarData}
@@ -260,7 +278,7 @@ const DocumentosForm = ({data, routeInfo}) => {
                             <Text style={estilo.textInputData}>{format(DataUltimaAnalise, 'dd/MM/yyyy')}</Text>
                         </TouchableOpacity>
                         {showDataUltimaAnalise == true &&
-                            <DataTimePicker
+                            <DateTimePicker
                                 mode='date' 
                                 value={values.data_da_ultima_analise_critica}
                                 onChange={mudarData}
@@ -278,7 +296,7 @@ const DocumentosForm = ({data, routeInfo}) => {
                             <Text style={estilo.textInputData}>{format(DataAtualizacao, 'dd/MM/yyyy')}</Text>
                         </TouchableOpacity>
                         {showDataAtualizacao == true &&
-                            <DataTimePicker
+                            <DateTimePicker
                                 mode='date' 
                                 value={values.atualizacao_em}
                                 onChangeText={mudarData}
@@ -317,7 +335,7 @@ const DocumentosForm = ({data, routeInfo}) => {
                             <Text style={estilo.textInputData}>{format(DataProximaAnalise, 'dd/MM/yyyy')}</Text>
                         </TouchableOpacity>
                         {showDataProximaAnalise == true &&
-                        <DataTimePicker
+                        <DateTimePicker
                             mode='date'
                             minimumDate={new Date()}
                             value={values.proxima_analise_critica_em}

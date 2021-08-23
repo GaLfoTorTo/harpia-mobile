@@ -8,26 +8,28 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import RNPickerSelect from 'react-native-picker-select';
 import Modal from 'react-native-modal';
+import LottieView from 'lottie-react-native';
 import {useFormik} from 'formik';
 import Salvar from '../../Api/Salvar';
 import estilo from './estilo';
 
-const ServicosForm = ({data, routeInfo}) => {
+const ServicosForm = ({navigation, data, routeInfo}) => {
     const servico = data;
     const [mensagem, setMensagem] = useState('')
-    const [modalMensagem, setModalMensagem] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [autoClose, setAutoClose] = useState(false);
 
     const salve = () => {
         Salvar(setMensagem, routeInfo.route, values)
-        setModalMensagem(true)
+        setLoading(true)
         setAutoClose(true)
     }
 
     const hideMensagem = () => {
         setMensagem('');
-        setModalMensagem(false)
+        setLoading(false)
         setAutoClose(false)
+        navigation.replace('Listagem', { item: routeInfo})
     }
 
     if (autoClose == true) {
@@ -52,22 +54,34 @@ const ServicosForm = ({data, routeInfo}) => {
 
     return(
         <View style={estilo.form}>
-            {mensagem != '' &&
+            {loading == true &&
                 <Modal
-                    isVisible={modalMensagem}
-                    animationIn='slideInRight'
-                    animationOut='slideOutRight'
+                    isVisible={loading}
+                    animationIn='fadeIn'
+                    animationOut='fadeOut'
                     backdropColor='grey'
                     backdropOpacity={0.3}
                     onBackdropPress={() => hideMensagem()}
                     onBackButtonPress={() => hideMensagem()}
                 >
-                    <TouchableOpacity
-                        style={[estilo.cardMensagem, mensagem == 'Não foi possivel salvar!' && estilo.cardMensagemDanger]}
-                        onPress={() => hideMensagem()}
-                    >
-                        <Text style={estilo.textMensagem}>{mensagem}</Text>
-                    </TouchableOpacity>
+                    {mensagem != '' ?
+                        <TouchableOpacity
+                            style={[estilo.cardMensagem, mensagem == 'Não foi possivel salvar!' && estilo.cardMensagemDanger]}
+                            onPress={() => hideMensagem()}
+                        >
+                            <Text style={estilo.textMensagem}>{mensagem}</Text>
+                        </TouchableOpacity>
+                        :
+                        <View style={estilo.load}>
+                            {/* <ActivityIndicator size='large' color='white' /> */}
+                            <LottieView
+                                source={require('../../../assets/harpianimation.json')}
+                                autoPlay
+                                loop
+                                style={estilo.load}
+                            />
+                        </View>
+                    }
                 </Modal>
             }
             <View style={estilo.row}>

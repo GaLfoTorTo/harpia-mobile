@@ -63,19 +63,19 @@ const Form = ({navigation, route}) => {
                 {(() => {
                     switch(routeInfo.title){
                         case 'Cargos' :
-                            return <CargosForm data={data} routeInfo={routeInfo}/>
+                            return <CargosForm data={data} routeInfo={routeInfo} navigation={navigation}/>
                         case 'Clientes':
-                            return <ClientesForm data={data} routeInfo={routeInfo} />
+                            return <ClientesForm data={data} routeInfo={routeInfo} navigation={navigation} />
                         case 'Colaboradores' :
-                            return <ColaboradoresForm data={data} routeInfo={routeInfo}/>
+                            return <ColaboradoresForm data={data} routeInfo={routeInfo} navigation={navigation}/>
                         case 'Setores':
-                            return <SetoresForm data={data} routeInfo={routeInfo} />
+                            return <SetoresForm data={data} routeInfo={routeInfo} navigation={navigation} />
                         case 'Documentos':
-                            return <DocumentosForm data={data} routeInfo={routeInfo} />
+                            return <DocumentosForm data={data} routeInfo={routeInfo} navigation={navigation} />
                         case 'Equipamentos':
-                            return <EquipamentosForm data={data} routeInfo={routeInfo} />
+                            return <EquipamentosForm data={data} routeInfo={routeInfo} navigation={navigation} />
                         case 'Serviços':
-                            return <ServicosForm data={data} routeInfo={routeInfo} />
+                            return <ServicosForm data={data} routeInfo={routeInfo} navigation={navigation} />
                         case 'Ações Propostas':
                             return <Vazio />
                         case 'Análise Crítica':

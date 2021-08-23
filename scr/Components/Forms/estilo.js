@@ -109,6 +109,16 @@ const estilo = StyleSheet.create({
         fontSize: 15,
         fontWeight: 'bold'
     },
+    load: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        right: 6,
+        bottom: 15,
+        backgroundColor: 'transparent',
+        width: '85%',
+        height: '85%'
+    }
 });
 
 export default estilo;
